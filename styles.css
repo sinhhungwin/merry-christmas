@@ -1,0 +1,87 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.postcard {
+    width: 450px; /* Adjust the width as needed */
+    height: 500px;
+    perspective: 1000px;
+    position: relative;
+}
+
+.front, .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backface-visibility: hidden;
+    transition: transform 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('christmas_image.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    opacity: 0.5; /* Adjust the opacity of the background image */
+}
+
+.front .image-overlay,
+.back .image-overlay {
+    z-index: -1; /* Move the image overlay behind the text */
+}
+
+.back {
+    transform: rotateY(180deg);
+    visibility: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.greeting {
+    color: #e44d26;
+}
+
+.signature {
+    color: darkgray; /* Change the color to dark gray */
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* Change the text color of paragraphs to dark gray */
+.greeting p,
+.signature p {
+    color: darkgray;
+}
+
+.open .front {
+    transform: rotateY(180deg);
+    visibility: hidden;
+}
+
+.open .back {
+    transform: rotateY(0deg);
+    visibility: visible;
+}
